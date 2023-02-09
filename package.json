@@ -1,0 +1,31 @@
+{
+  "name": "github_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tamtox/github_test.git"
+  },
+  "author": "tamtox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tamtox/github_test/issues"
+  },
+  "homepage": "https://github.com/Tamtox/github_test#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.9.1",
+    "octokit": "^2.0.14"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.13.0",
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.9.5"
+  }
+}
