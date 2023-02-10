@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run dev"
+    "test": "npm run dev",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon dist/index.js"
   },
   "repository": {
     "type": "git",

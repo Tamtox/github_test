@@ -19,8 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Routes
-const repoRoutes = require('./routes/repo');
-app.search('/repos', repoRoutes);
+const repoRoutes = require('./routes/repo-routes');
+app.use('/repos', repoRoutes);
 
 // Unknown routes
 app.use((req: Request, res: Response, next: NextFunction) => {
@@ -29,9 +29,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 async function appStart() {
     try {
-        await mongoose.connect(`mongodb+srv://${MONGO_ATLAS_USERNAME}:${mongoAtlasPass}@cluster0.rqrzn.mongodb.net/momentum?retryWrites=true&w=majority`);
+        await mongoose.connect(`mongodb+srv://${MONGO_ATLAS_USERNAME}:${mongoAtlasPass}@cluster0.rqrzn.mongodb.net/github?retryWrites=true&w=majority`);
         app.listen(PORT || 8080);
-        console.log(`Server up at port ${PORT || 8080}`);
+        console.log(`Server up at port ${PORT}`);
     } catch (error) {
         console.log("Database connection failed. exiting now...");
         console.error(error);
