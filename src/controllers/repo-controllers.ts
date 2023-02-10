@@ -82,8 +82,8 @@ const getSingleRepo: RequestHandler = async (req, res, next) => {
 }
 
 
-// Initial interval for every 20 minutes.
-let checkGithubInterval = setInterval(() => { loadData(1, true) }, 1200000);
+// Initial interval for every 6 hours.
+let checkGithubInterval = setInterval(() => { loadData(1, true) }, 21600000);
 
 const syncRepos: RequestHandler = async (req, res, next) => {
   let repoList: any[] = [];
@@ -94,9 +94,9 @@ const syncRepos: RequestHandler = async (req, res, next) => {
     } else {
       throw new Error("Failed");
     }
-    // Reset interval every 20 minutes.
+    // Reset interval every 6 hours.
     clearInterval(checkGithubInterval);
-    checkGithubInterval = setInterval(() => { loadData(1, true) }, 1200000);
+    checkGithubInterval = setInterval(() => { loadData(1, true) }, 21600000);
   } catch (error) {
     return res.status(500).json({ message: 'Failed to retrieve repos.' })
   }

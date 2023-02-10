@@ -4,6 +4,7 @@ import 'dotenv/config';
 process.env.TZ = 'Etc/Universal';
 const { PORT, MONGO_ATLAS_USERNAME, MONGO_ATLAS_PASS } = process.env;
 const app = express();
+import path from "path";
 const mongoAtlasPass = encodeURIComponent(`${MONGO_ATLAS_PASS}`);
 
 // CORS Headers config
@@ -17,10 +18,16 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // Encoders
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 const repoRoutes = require('./routes/repo-routes');
 app.use('/repos', repoRoutes);
+
+// Static
+app.use((req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 // Unknown routes
 app.use((req: Request, res: Response, next: NextFunction) => {
